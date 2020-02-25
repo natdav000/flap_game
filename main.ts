@@ -134,7 +134,11 @@ b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a 
 `)
+// asks the player if they want their sprite to be a
+// plane or helicopter
 let question = game.askForString("do you want a helicopter or a plane")
+// depending on user input this series of code decides
+// on which sprite to use
 if (question == "helicopter") {
     mySprite = sprites.create(img`
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -182,34 +186,37 @@ if (question == "helicopter") {
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 . . . . 
-. . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . . 
-. . . . . . . . . 3 3 3 3 3 3 3 3 3 3 f f f f f f . . . . . . . 
-3 3 3 3 3 . . . . 3 3 3 3 3 3 3 3 3 3 f f f f f f . . . . . . . 
-3 . 3 . 3 . . . . 3 3 3 3 3 3 3 3 3 3 f f f f f f . . . . . . . 
-3 . 3 . 3 . . . . 3 3 3 3 3 3 3 3 3 3 3 f f f f f . . . . . . . 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 f f f f . . . . . . . 
-3 . 3 . 3 . . . . 3 3 3 3 3 3 3 3 3 3 3 3 3 f f f . . . . . . . 
-3 3 3 3 3 . . . . 3 3 3 3 3 3 3 3 3 3 3 3 3 3 f f . . . . . . . 
-. . . . . . . . . 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 f . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . f f f . . . . f f . . . . . . . . . . . . . . . . 
+. . . . . . . f 4 4 f . . f 6 6 f . . . . . . . . . . . . . . . 
+. . . . . . . f 4 4 f . . . f 6 6 f . . . . . . . . . . . . . . 
+. . . . . . . f 4 4 4 f . . . f 6 6 f . . . . . . . . . . . . . 
+. . . . . . . f 4 4 4 f . . . . f 6 6 f . . . . . . . . . . . . 
+. . . . . . . f 4 4 4 4 f . . . . f 6 6 f . . . . . . . . . . . 
+. . . . . . . f 4 4 4 4 4 f f . . . f 6 6 f . . . . . . . . . . 
+. . . . . . . f 4 4 4 4 4 4 4 f f . f 6 6 f . . . . . . . . . . 
+. . . . . . . f 6 6 6 6 4 4 4 4 4 f f 6 6 f . . . . . . . . . . 
+. . . . . . . f f 6 6 6 6 6 4 4 4 4 4 f f . . . . . . . . . . . 
+. . . . . . . . . f f 6 6 6 6 4 4 4 4 4 4 f f . . . . . . . . . 
+. . . . . . . . . . . f f 6 6 6 6 4 4 4 4 4 4 f f f . . . . . . 
+. . . . . . . . . . . . . f f 6 6 6 6 4 4 4 4 4 5 5 f f . . . . 
+. . . . . . . . . . . . . . f f f 6 6 6 6 4 4 5 5 5 5 f . . . . 
+. . . . . . . . . . . . f f f 6 6 f f 6 6 6 6 4 4 5 5 f . . . . 
+. . . . . . . . . . . f f 6 6 6 f f . f f 6 6 6 6 6 6 f . . . . 
+. . . . . . . . . f f f 6 6 6 6 f . . . . f f 6 6 6 f . . . . . 
+. . . . . . . f f f 6 6 6 6 6 f f . . . . . . f f f . . . . . . 
+. . . . . . . f 6 6 f f f f f f . . . . . . . . . . . . . . . . 
+. . . . . . . f f f f . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
+    mySprite.vy = 50
 }
 game.onUpdateInterval(1500, function () {
     info.changeScoreBy(1)
     gap = Math.randomRange(0, 3)
+    // chooses randomly which series of pillars will be
+    // used
     if (gap == 0) {
         topimage = img`
 . . . . . . . . f a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a f . . . . . . . . . 
@@ -711,6 +718,8 @@ game.onUpdateInterval(1500, function () {
 . . . . . . . . . . . . . . . . . . . . . f c c c c c c c c c c c c c c c c c c c c c c c c c c c f . . . . . . . . . . . . . . . . . 
 `
     }
+    // sets the speed of the pillars to -45 until the
+    // player reaches a score of 10
     if (info.score() < 10) {
         projectile = sprites.createProjectileFromSide(topimage, -45, 0)
         projectile = sprites.createProjectileFromSide(topimage, -45, 0)
@@ -719,6 +728,8 @@ game.onUpdateInterval(1500, function () {
         projectile.bottom = scene.screenHeight()
     }
 })
+// changes the speed of the pillars after 10 points
+// and 20 points
 game.onUpdateInterval(1500, function () {
     if (info.score() >= 10) {
         if (info.score() < 20) {
